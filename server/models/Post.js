@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
     heading:{
@@ -23,8 +23,11 @@ const PostSchema = new mongoose.Schema({
         required: true
     },
     created_at:{
-        type: Date
+        type: Date,
+        default: new Date().toLocaleString("en-US", {timeZone: "America/Argentina/Buenos_Aires"})
     }
 })
 
-module.exports = mongoose.models.Post || mongoose.model('Post', PostSchema);
+export default PostSchema;
+
+//can set "default" to new Date for "created_at" field.
