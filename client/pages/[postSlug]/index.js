@@ -36,8 +36,9 @@ export async function getStaticPaths() {
   return {
     paths: [
       {params: { postSlug: "2022-draft-board-rockets-land-smith-with-no-3-pick"} },
+      {params: { postSlug: "andrew-wiggins-going-at-it"} },
     ],
-    fallback: true,
+    fallback: "blocking",
   };
 }
 
