@@ -8,7 +8,7 @@ export default function HomeCarrousel(props) {
     <Carousel controls={false} fade={true} interval={5000}>
       {props.posts.map((item, indx) => {
         let isActive = indx == 0 ? "active" : "";
-          if (indx < 3) {
+          if (indx < 5) {
             return (
               <Carousel.Item key={indx} className={styles.item}>
                 <Carousel.Caption className={styles.caption}>

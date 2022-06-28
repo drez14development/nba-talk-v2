@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import { useForm } from "react-hook-form";
 
-const NewPost = () => {
+export default function NewPost() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -16,13 +16,13 @@ const NewPost = () => {
     }
     
     try {
-      const res = await fetch("http://localhost:3000/api/posts", {
+      const res = await fetch("http://localhost:5000/posts", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data), //Should this be "stringified" ? or not? 
       });
       router.push("/");
     } catch (error) {
@@ -39,7 +39,7 @@ const NewPost = () => {
             {isSubmitting ? (
               <p>Loading...</p>
             ) : (
-              <form className="form" onSubmit={handleSubmit(onSubmit)}>
+              <form className="form" onSubmit={handleSubmit(onSubmit)} method="POST">
                 {errors.heading && <span className="text-danger">This field is required</span>}
                 <input className="mb-3 form-control" placeholder="Heading" {...register("heading", {required: true})}/>
 
@@ -61,5 +61,3 @@ const NewPost = () => {
     </div>
   );
 };
-
-export default NewPost;

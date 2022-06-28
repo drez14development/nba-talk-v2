@@ -1,0 +1,5 @@
+To DO
+- Implement Express js Authentication (register & login)
+
+DONE
+- Build up an express js REST API that connects to my mongodb DB.
