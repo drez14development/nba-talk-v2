@@ -17,12 +17,23 @@ app.get('/posts', (req, res) => {
 
     Post.find().exec(function (err, all_posts) {
         if (err) { return next(err); }
-        res.status(200).send({posts: all_posts});
+        res.status(200).json(all_posts);
+      });;
+})
+
+app.get('/posts/:slug', (req, res) => {
+
+    dbConnect();
+    const Post = mongoose.model("Post", PostSchema);
+    const postSlug = req.params.slug;
+
+    Post.findOne({ slug: postSlug }).exec(function (err, postData) {
+        if (err) { return next(err); }
+        console.log("Retrieving "+ postData.slug);
+        res.status(200).json(postData);
       });;
 })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}` )
 })
-
-//INSTALL NODEMON SO THAT I DON'T HAVE TO RESTART THE SERVER ALL THE TIME
