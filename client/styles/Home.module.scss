@@ -1,0 +1,11 @@
+$nba-blue: #1d418b;
+$nba-red: #c80f2e;
+$nba-white: #ffffff;
+
+.mainWrapper {
+    background: #ddd;
+    .homeHeader {
+        background: $nba-blue;
+        color: $nba-white;
+    }
+}
